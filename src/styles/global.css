@@ -26,3 +26,38 @@ p {
   margin: 16px auto;
   line-height: 1.5rem;
 }
+
+/* layout & nav */
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 40px auto;
+}
+
+nav .links {
+  display: inline-block;
+  text-align: right;
+}
+
+nav a {
+  display: inline-block;
+  margin-left: 20px;
+  font-weight: 400;
+  padding-bottom: 8px;
+  border-bottom: 3px solid transparent;
+}
+
+nav a:hover {
+  border-color: white;
+}
+
+footer p {
+  text-align: center;
+  color: #bbb;
+  margin: 40px auto;
+}
