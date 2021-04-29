@@ -13,8 +13,6 @@ const ProjectDetails = props => {
   const { html } = data.markdownRemark
   const { title, stack, featureImg } = data.markdownRemark.frontmatter
 
-  console.log("test", data.markdownRemark.frontmatter)
-
   return (
     <Layout>
       <div className={details}>
