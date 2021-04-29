@@ -1,5 +1,7 @@
 import React from "react"
 import NavBar from "./Navbar"
+import "../styles/global.css"
+
 const Layout = props => {
   const { children } = props
   return (
