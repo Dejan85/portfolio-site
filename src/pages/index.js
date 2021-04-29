@@ -15,6 +15,7 @@ const Home = () => {
             My Projects
           </Link>
         </div>
+        <img src="/banner.png" alt="img" style={{ maxWidth: "100%" }} />
       </section>
     </Layout>
   )
