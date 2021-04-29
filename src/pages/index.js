@@ -1,5 +1,15 @@
 import React from "react"
 
-export default function Home() {
-  return <div>Hello world!</div>
+const Home = () => {
+  return (
+    <section>
+      <div>
+        <h2>Design</h2>
+        <h3>Develop & deploy</h3>
+        <p>Develop in Gutsby</p>
+      </div>
+    </section>
+  )
 }
+
+export default Home
