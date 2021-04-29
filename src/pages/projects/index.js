@@ -5,10 +5,12 @@ import {
   portfolio,
   projects as projectsStyle,
 } from "../../styles/projects.module.css"
+import Img from "gatsby-image"
 
 const Projects = props => {
   const { data } = props
-  const projects = data.allMarkdownRemark.nodes
+  const projects = data.projects.nodes
+  const contact = data.contact.siteMetadata.contact
 
   return (
     <Layout>
@@ -16,15 +18,24 @@ const Projects = props => {
         <h2>Portfolio</h2>
         <h3>Projects & Website I've created</h3>
         <div className={projectsStyle}>
-          {projects.map(project => (
-            <Link key={project.id} to={`/projects/${project.frontmatter.slug}`}>
-              <div>
-                <h3>{project.frontmatter.title}</h3>
-                <p>{project.frontmatter.stuck}</p>
-              </div>
-            </Link>
-          ))}
+          {projects.map(project => {
+            return (
+              <Link
+                key={project.id}
+                to={`/projects/${project.frontmatter.slug}`}
+              >
+                <div>
+                  <Img
+                    fluid={project.frontmatter.thumg.childImageSharp.fluid}
+                  />
+                  <h3>{project.frontmatter.title}</h3>
+                  <p>{project.frontmatter.stuck}</p>
+                </div>
+              </Link>
+            )
+          })}
         </div>
+        <p>Like what you see? Email me at {contact} for a qoute!</p>
       </div>
     </Layout>
   )
@@ -34,14 +45,28 @@ export default Projects
 
 export const query = graphql`
   query ProjectsPage {
-    allMarkdownRemark {
+    projects: allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       nodes {
         frontmatter {
           slug
           stack
           title
+          thumg {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         id
+      }
+    }
+    contact: site {
+      siteMetadata {
+        contact
       }
     }
   }
