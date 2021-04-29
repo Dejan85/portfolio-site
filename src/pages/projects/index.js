@@ -1,8 +1,26 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../../components/Layout"
 import { portfolio } from "../../styles/projects.module.css"
 
 const Projects = () => {
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      allMarkdownRemark {
+        nodes {
+          frontmatter {
+            slug
+            stack
+            title
+          }
+          id
+        }
+      }
+    }
+  `)
+
+  console.log("test", data)
+
   return (
     <Layout>
       <div className={portfolio}>
